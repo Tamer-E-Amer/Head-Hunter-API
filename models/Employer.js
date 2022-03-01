@@ -9,6 +9,9 @@ const employerSchema = mongoose.Schema({
     about           :{type:String,  required:true},
     address         :{type:Object,  required:true},
     businessField   :{type:Array,   required:true},
+    foundedIn       :{type:String,  default:"N/A"},
+    noOfEmployees   :{type:Number,  default:"N/A"},
+    logo            :{type:String}
 },
 {timeStamps:true}
 );
