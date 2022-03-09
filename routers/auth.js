@@ -10,7 +10,7 @@ const router = express.Router();
 
 // User registeration
 router.post('/register',async(req,res)=>{
-    const user = new User({
+    const NewUser = new User({
         userName:req.body.userName,
         password:CryptoJS.AES.encrypt(req.body.password,process.env.ENC_DEC_KEY),
         email:req.body.email,
@@ -18,8 +18,8 @@ router.post('/register',async(req,res)=>{
         isAdmin:req.body.isAdmin,
     });
     try {
-        const newUser = await user.save();
-        res.status(200).json(newUser)   ;
+        const savedUser = await NewUser.save();
+        res.status(201).json(savedUser)   ;
     } catch (error) {
         res.status(5000).json(error);
     }

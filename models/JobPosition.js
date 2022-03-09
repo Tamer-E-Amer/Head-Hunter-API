@@ -7,7 +7,7 @@
      userId         :{type:String,  required:true},
      title          :{type:String,  required:true},
      description    :{type:String,  required:true},
-     jobType        :{type:String,  required},                          // fulltime / prat time or remote
+     jobType        :{type:String,  required:true},                          // fulltime / prat time or remote
      yourRoles      :{type:Array,   required:true},                     // array of list of job roles
      requirements   :{type:Array,   required:true},                     // array of list of job requirements
      weOffer        :{type:Array,   required:true},                     // array of list of company offers
@@ -16,7 +16,7 @@
      company        :{type:String,  required:true},
      place          :{type:Object,  required:true},                     // address object such as country city street and postal code
      status         :{type:String,  default:"open"},
-     validTo        :{type:Date,    required:true},                     // object of different repositiory such as github, behance ,...
+     validTo        :{type:String,    required:true},                     // object of different repositiory such as github, behance ,...
 
      
  },

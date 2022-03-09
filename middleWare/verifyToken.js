@@ -36,7 +36,7 @@ const verifyTokenAndAdmin = (req,res,next)=>{
         if(req.user.isAdmin){
             next();
         }else{
-            res.json(403).json("You are not allowed to do that");
+            res.status(403).json("You are not allowed to do that");
         }
     });
 }
@@ -47,7 +47,7 @@ const verifyTokenAndCandidate = (req,res,next)=>{
         if(req.user.userType == "candidate"){
             next();
         }else{
-            res.json(403).json("You are not allowed to do that");
+            res.status(403).json("You are not allowed to do that");
         }
     });
 }
@@ -57,7 +57,7 @@ const verifyTokenAndAdminForJobPosting = (req,res,next)=>{
         if(req.user.isAdmin || req.user.userType == "employer" ){
             next();
         }else{
-            res.json(403).json("You are not allowed to do that");
+            res.status(403).json("You are not allowed to do that");
         }
     });
 }

@@ -2,7 +2,7 @@
  * @description jobPosition router for jobPosition CRUD operation
  */
 import express from 'express';
-import { verifyTokenAndAdmin, verifyTokenAndAdminForJobPosting } from '../middleWare/verifyToken.js';
+import { verifyToken, verifyTokenAndAdmin, verifyTokenAndAdminForJobPosting } from '../middleWare/verifyToken.js';
 import JobPosition from '../models/JobPosition.js';
  
  const router = express.Router();
@@ -13,7 +13,7 @@ router.post('/newJobPosting',verifyTokenAndAdminForJobPosting,async(req,res)=>{
     const newJobPosting = new JobPosition(req.body);
     try {
         const savedJobPosting = await newJobPosting.save();
-        res.status(200).json(savedJobPosting);
+        res.status(201).json(savedJobPosting);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -81,6 +81,16 @@ router.get("/allJobPostings/employer/:userId",verifyTokenAndAdminForJobPosting,a
 router.get("/find/:id",verifyTokenAndAdmin,async(req,res)=>{
     try {
         const jobPosting = await JobPosition.findOne(req.params.id);
+        res.status(200).json(jobPosting);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
+// get all job posting for candidates
+router.get("/find/:category",async(req,res)=>{
+    try {
+        const jobPosting = await JobPosition.find(req.params.category);
         res.status(200).json(jobPosting);
     } catch (error) {
         res.status(500).json(error);

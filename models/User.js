@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
     password    :{type:String,      required:true},
     email       :{type:String,      required:true,      unique:true},
     userType    :{type:String,      required:true,      default:"candidate"},
-    isAdmin     :{type:Boolean,     required:true,      default:"false"},
+    isAdmin     :{type:Boolean,     required:true,      default:false},
 },
 {timeStamps:true}
 );
